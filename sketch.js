@@ -1,64 +1,29 @@
-var rect1X = 600;
-var rect1Y = 300;
-var rect1Width = 100;
-var rect1Height = 100;
-var move = 5;
-var rect2X = 300;
-var rect2Y = 300;
-var rect2Width = 50;
-var rect2Height = 50;
+const nextButton = document.querySelector(".next-button");
 
-function setup()  {
-  createCanvas(windowWidth, windowHeight);
-}
+const levelOne= document.querySelector(".level-one");
+const levelTwo= document.querySelector(".level-two");
 
-function draw(){
-  
-  keyPressed();
-  rectMode(CENTER);
-  background(0);
-  noStroke();
-  fill(255,0, 0);
-  
-  
-  rect(rect1X, rect1Y, rect1Width, rect1Height);
-  
-  if(rect1X < 0){
-    rect1X = rect1X + move;
+const uiLevel = document.querySelector(".ui-level");
+const uiMessage = document.querySelector(".ui-message");
+const collisionCheck = (value) => {
+  if(value === "maze-border") alert ("game over...Try again.");
+  if(value === "finish"){
+    nextButton.style.opacity =1;
+    nextButton.style.pointerEvents= "all";
+    levelOne.style.pointerEvents= "none";
   }
-  if(rect1X > width){
-    rect1X = rect1X - move;
-  }
-   if(rect1Y < 0){
-    rect1Y = rect1Y + move;
-  }
-   if(rect1Y > height){
-    rect1Y = rect1Y - move;
-  }
- 
-  
-  fill( 0,255,0);
-  rect(rect2X, rect2Y, rect2Width, rect2Height);
-  
-  if( rect1X > rect2X-rect2Width-30 && rect1X < rect2X+rect2Width+30 && rect1Y > rect2Y-rect2Height-30 && rect1Y < rect2Y+rect2Height+30){ 
-    move = move*-1;
-    
-  }
-  else{
-    move = 5;
-  }
-}
-function keyPressed(){
-  if(keyCode == UP_ARROW && keyIsPressed){
-    rect1Y = rect1Y-move;
-  }
-  if(keyCode == DOWN_ARROW && keyIsPressed){
-    rect1Y = rect1Y+move;
-  }
-  if(keyCode == LEFT_ARROW && keyIsPressed){
-    rect1X = rect1X-move;
-  }
-  if(keyCode == RIGHT_ARROW && keyIsPressed){
-    rect1X = rect1X+move;
-    }
-}
+};
+window.addEventListener("mousemove", (e) => {
+  let check = e.target.classList.value;
+  collisionCheck(check);
+});
+
+
+nextButton.addEventListener("click", () => {
+ levelOne.style.display = "none";
+ levelTwo.style.display = "block";
+ nextButton.style.opacity= 0;
+ nextButton.style.pointerEvents= "none";
+ uiLevel.textContent= "level 2";
+ uiMessage.textContent = " continue!";
+});
