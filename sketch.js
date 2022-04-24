@@ -1,29 +1,61 @@
+function preload() {
+  cursorImg = loadImage('assets/mousecross.png');
+}
+function gameStage1(){
+image(cursorImg, mouseX, mouseY);
+}
+
 const nextButton = document.querySelector(".next-button");
+
 
 const levelOne= document.querySelector(".level-one");
 const levelTwo= document.querySelector(".level-two");
+const levelThree= document.querySelector(".level-three");
+const levelFour= document.querySelector(".level-four");
 
 const uiLevel = document.querySelector(".ui-level");
 const uiMessage = document.querySelector(".ui-message");
+
+let currentLevel = 1;
+const levels = [
+  null,
+  levelOne,
+  levelTwo,
+  levelThree,
+  levelFour,
+];
+//
+//
 const collisionCheck = (value) => {
+  console.log(value);
   if(value === "maze-border") alert ("game over...Try again.");
   if(value === "finish"){
-    nextButton.style.opacity =1;
+    nextButton.style.opacity= 1;
     nextButton.style.pointerEvents= "all";
-    levelOne.style.pointerEvents= "none";
+    levels[currentLevel].style.pointerEvents = "none";
+    nextButton.textContent = `level ${currentLevel + 1}`;
   }
 };
+
 window.addEventListener("mousemove", (e) => {
-  let check = e.target.classList.value;
+  const check = e.target.classList.value;
   collisionCheck(check);
 });
 
 
 nextButton.addEventListener("click", () => {
- levelOne.style.display = "none";
- levelTwo.style.display = "block";
- nextButton.style.opacity= 0;
- nextButton.style.pointerEvents= "none";
- uiLevel.textContent= "level 2";
- uiMessage.textContent = " continue!";
+  currentLevel++;
+  levels.forEach((level, index) => {
+    if (level !== null) {
+      if (index === currentLevel) {
+        level.style.display = "block"
+      } else {
+        level.style.display = "none";
+      }
+    }
+  })
+  nextButton.style.opacity= 0;
+  nextButton.style.pointerEvents= "none";
+  uiLevel.textContent= `level ${currentLevel}`;
+  uiMessage.textContent = " continue!";
 });
