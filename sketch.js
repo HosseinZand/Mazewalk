@@ -1,9 +1,4 @@
-function preload() {
-  cursorImg = loadImage('assets/mousecross.png');
-}
-function gameStage1(){
-image(cursorImg, mouseX, mouseY);
-}
+
 
 const nextButton = document.querySelector(".next-button");
 
@@ -27,7 +22,6 @@ const levels = [
 //
 //
 const collisionCheck = (value) => {
-  console.log(value);
   if(value === "maze-border") alert ("game over...Try again.");
   if(value === "finish"){
     nextButton.style.opacity= 1;
