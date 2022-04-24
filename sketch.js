@@ -32,6 +32,11 @@ const collisionCheck = (value) => {
     nextButton.style.pointerEvents= "all";
     levels[currentLevel].style.pointerEvents = "none";
     nextButton.textContent = `level ${currentLevel + 1}`;
+
+    if (!levels[currentLevel + 1]) {
+      document.querySelector('body').style.backgroundImage = "url('assets/finish line.jpg')";
+      nextButton.textContent = "Restart";
+    }
   }
 };
 
@@ -42,6 +47,12 @@ window.addEventListener("mousemove", (e) => {
 
 
 nextButton.addEventListener("click", () => {
+  console.log(currentLevel, levels.length)
+  if (currentLevel >= levels.length - 1) {
+    currentLevel = 0;
+    document.querySelector('body').style.backgroundImage = "url('assets/background.jpg')";
+  }
+
   currentLevel++;
   levels.forEach((level, index) => {
     if (level !== null) {
@@ -51,7 +62,7 @@ nextButton.addEventListener("click", () => {
         level.style.display = "none";
       }
     }
-  })
+  });
   nextButton.style.opacity= 0;
   nextButton.style.pointerEvents= "none";
   uiLevel.textContent= `level ${currentLevel}`;

@@ -3,8 +3,7 @@ html, body {
   padding: 0;
   box-sizing: border-box;
   background-image: url('assets/background.jpg');
-  background-repeat: repeat;
-  background-size: fill;
+  background-size: cover;
 }
 body{
   font-family: "Baloo"
@@ -52,7 +51,7 @@ body{
   display: none;
 }
 div {
-   cursor: url('/assets/mousecross1.png'), auto;
+   cursor: url('/assets/mousecross1.png') 10 2, auto;
 }
 canvas {
   display: block;
