@@ -1,4 +1,8 @@
+const cursor = document.querySelector('.cursor');
 
+document.addEventListener('mousemove', e => {
+  cursor.setAttribute("cursor", "top: "+(e.pageY - 16)+"px; left: "+(e.pageX - 16)+ "px;")
+});
 
 const nextButton = document.querySelector(".next-button");
 
