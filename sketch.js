@@ -30,7 +30,7 @@ const collisionCheck = (value) => {
     nextButton.textContent = `level ${currentLevel + 1}`;
 
     if (!levels[currentLevel + 1]) {
-      document.querySelector('body').style.backgroundImage = "url('assets/finish line.jpg')";
+      document.querySelector('body').style.backgroundImage = "url('assets/Finish line.jpg')";
       nextButton.textContent = "Restart";
     }
   }
