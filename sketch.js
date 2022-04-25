@@ -1,9 +1,5 @@
 const cursor = document.querySelector('.cursor');
 
-document.addEventListener('mousemove', e => {
-  cursor.setAttribute("cursor", "top: "+(e.pageY - 16)+"px; left: "+(e.pageX - 16)+ "px;")
-});
-
 const nextButton = document.querySelector(".next-button");
 
 
@@ -19,9 +15,9 @@ let currentLevel = 1;
 const levels = [
   null,
   levelOne,
-  levelTwo,
-  levelThree,
-  levelFour,
+  // levelTwo,
+  // levelThree,
+  // levelFour,
 ];
 //
 //
@@ -42,12 +38,12 @@ const collisionCheck = (value) => {
 
 window.addEventListener("mousemove", (e) => {
   const check = e.target.classList.value;
+  console.log(check)
   collisionCheck(check);
 });
 
 
 nextButton.addEventListener("click", () => {
-  console.log(currentLevel, levels.length)
   if (currentLevel >= levels.length - 1) {
     currentLevel = 0;
     document.querySelector('body').style.backgroundImage = "url('assets/background.jpg')";
@@ -58,7 +54,9 @@ nextButton.addEventListener("click", () => {
     if (level !== null) {
       if (index === currentLevel) {
         level.style.display = "block"
+        level.style.pointerEvents = "";
       } else {
+        level.style.pointerEvents = "none";
         level.style.display = "none";
       }
     }
