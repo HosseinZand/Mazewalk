@@ -15,9 +15,9 @@ let currentLevel = 1;
 const levels = [
   null,
   levelOne,
-  // levelTwo,
-  // levelThree,
-  // levelFour,
+  levelTwo,
+  levelThree,
+  levelFour,
 ];
 //
 //
