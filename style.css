@@ -51,7 +51,7 @@ body{
   display: none;
 }
 div {
-   cursor: url('/assets/mousecross1.png') 10 2, auto;
+   cursor: url('assets/mousecross1.png') 10 2, auto;
 }
 canvas {
   display: block;
