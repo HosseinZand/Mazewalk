@@ -24,14 +24,17 @@ const levels = [
 const collisionCheck = (value) => {
   if(value === "maze-border") alert ("game over...Try again.");
   if(value === "finish"){
+    const level = levels[currentLevel];
     nextButton.style.opacity= 1;
     nextButton.style.pointerEvents= "all";
-    levels[currentLevel].style.pointerEvents = "none";
+    level.style.pointerEvents = "none";
     nextButton.textContent = `level ${currentLevel + 1}`;
 
     if (!levels[currentLevel + 1]) {
       document.querySelector('body').style.backgroundImage = "url('assets/Finish line.jpg')";
       nextButton.textContent = "Restart";
+      level.style.pointerEvents = "none";
+      level.style.display = "none";
     }
   }
 };
