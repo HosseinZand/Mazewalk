@@ -14,7 +14,9 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: red;
+  color: Orange;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: Orange;
 }
 .game{
   min-height: 80vh;
@@ -31,7 +33,7 @@ body{
 }
 .next-button{
   padding: 1rem 3rem;
-  background: rgb(250, 0, 0);
+  background: rgb(0, 0,250);
   color: black;
   border: none;
   cursor: pointer;
