@@ -31,6 +31,7 @@ const collisionCheck = (value) => {
     nextButton.textContent = `level ${currentLevel + 1}`;
 
     if (!levels[currentLevel + 1]) {
+      document.querySelector('#repo_link').style.display = "block";
       document.querySelector('body').style.backgroundImage = "url('assets/Finish line.jpg')";
       nextButton.textContent = "Restart";
       level.style.pointerEvents = "none";
@@ -50,6 +51,7 @@ nextButton.addEventListener("click", () => {
   if (currentLevel >= levels.length - 1) {
     currentLevel = 0;
     document.querySelector('body').style.backgroundImage = "url('assets/background.jpg')";
+    document.querySelector('#repo_link').style.display = "none";
   }
 
   currentLevel++;

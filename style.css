@@ -58,3 +58,10 @@ div {
 canvas {
   display: block;
 }
+
+a#repo_link {
+  display: none;
+}
+a {
+ font-size: 2rem
+}
